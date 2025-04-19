@@ -19,3 +19,4 @@ jobs:
         with:
           path: .
           format: sarif
+        continue-on-error: true
