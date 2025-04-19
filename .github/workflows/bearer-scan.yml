@@ -1,4 +1,4 @@
-name: Bearer CLI SAST Scan
+name: Bearer SAST Scan
 
 on:
   push:
@@ -7,18 +7,15 @@ on:
     branches: [ "main" ]
 
 jobs:
-  sast_scan:
+  bearer-scan:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Install Bearer CLI
-      run: |
-        curl -sfL https://raw.githubusercontent.com/Bearer/bearer/main/install.sh | sh
-
-    - name: Run Bearer scan
-      run: |
-        bearer scan . --format sarif > results.sarif
-
+      - name: Run Bearer scan
+        uses: bearer/bearer-action@v2
+        with:
+          path: .
+          format: sarif
