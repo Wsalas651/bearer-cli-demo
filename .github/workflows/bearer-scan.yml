@@ -20,4 +20,5 @@ jobs:
 
     - name: Run Bearer scan
       run: |
-        ./bin/bearer scan . --format sarif > results.sarif
+        bearer scan . --format sarif > results.sarif
+
